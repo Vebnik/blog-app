@@ -1,0 +1,14 @@
+[project]
+name = "blog-post-app"
+version = "0.1.0"
+description = "Simple blog post app with api"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django>=5.2.7",
+    "django-filter>=25.2",
+    "djangorestframework>=3.16.1",
+    "markdown>=3.9",
+    "psycopg>=3.2.11",
+    "python-dotenv>=1.1.1",
+]
