@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # other
     "rest_framework",
-    "blog.apps.BlogConfig"
+    "post.apps.PostConfig",
+    "comment.apps.CommentConfig",
 ]
 
 MIDDLEWARE = [

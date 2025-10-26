@@ -10,8 +10,8 @@ class PostModel(models.Model):
         verbose_name = _("Post")
         verbose_name_plural = _("Posts")
 
-    name = models.CharField(_("Name"), max_length=1024)
-    short_description = models.TextField(_("Short description"))
+    title = models.CharField(_("Title"), max_length=1024)
+    description = models.TextField(_("Short description"))
     content = models.TextField(_("Content"))
     image = models.ImageField(
         _("Image"),
@@ -24,26 +24,7 @@ class PostModel(models.Model):
     author = models.ForeignKey(User, verbose_name=_("Author"), on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.title
 
     def get_absolute_url(self):
         return reverse("PostModel_detail", kwargs={"pk": self.pk})
-
-
-class CommentModel(models.Model):
-
-    class Meta:
-        verbose_name = _("Comment")
-        verbose_name_plural = _("Comments")
-
-    author = models.CharField(_("Author"), max_length=128)
-    content = models.TextField(_("Content"))
-    created_at = models.DateTimeField(_("Created"), auto_now_add=True)
-    post = models.ForeignKey(PostModel, verbose_name=_("Post"), on_delete=models.CASCADE)
-    
-
-    def __str__(self):
-        return f"{self.post} - {self.author}"
-
-    def get_absolute_url(self):
-        return reverse("CommentModel_detail", kwargs={"pk": self.pk})
