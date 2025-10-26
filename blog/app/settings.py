@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 try:
@@ -11,13 +10,8 @@ except Exception as err:
     print(f"Not found .env ({err})")
     exit(1)
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.getenv("DEBUG"))
 
 ALLOWED_HOSTS = []
@@ -35,6 +29,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # other
     "rest_framework",
+    "blog.apps.BlogConfig"
 ]
 
 MIDDLEWARE = [
@@ -47,7 +42,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "blog.urls"
+ROOT_URLCONF = "app.urls"
 
 TEMPLATES = [
     {
@@ -64,7 +59,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "blog.wsgi.application"
+WSGI_APPLICATION = "app.wsgi.application"
 
 
 # Database
@@ -116,7 +111,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+MEDIA_ROOT = BASE_DIR / "media"
+
 STATIC_URL = "static/"
+MEDIA_URL = "media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
