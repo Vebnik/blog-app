@@ -9,6 +9,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     # drf
     path("api-auth/", include("rest_framework.urls")),
+    # post
+    path("api/post/", include("post.urls")),
 ]
 
 urlpatterns = urlpatterns + static(MEDIA_URL, document_root=MEDIA_ROOT)
