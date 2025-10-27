@@ -11,6 +11,7 @@
 - run dev server `uv run py .\manage.py runserver`
 
 ### Docker
+- clone this repo `git clone this-repo`
 - run `docker compose -p blog-app up --build -d`
 
 ### Notes
