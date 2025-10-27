@@ -10,7 +10,7 @@ wheels/
 .venv
 
 # some secrets
-.env
+dev.env
 
 # media
 media

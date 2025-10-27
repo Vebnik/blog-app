@@ -1,11 +1,22 @@
 from rest_framework import status
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.exceptions import APIException
+from drf_spectacular.utils import extend_schema_view, extend_schema, OpenApiParameter
 
 from post.serializers import PostDetailSerializer, PostListSerializer
 from post.service import PostService, PostRepositoryFilter
 
 
+@extend_schema_view(
+    get=extend_schema(
+        parameters=[
+            OpenApiParameter(name="filter_by", description="Filter field", type=str, required=False),
+            OpenApiParameter(name="value", description="Filter value", type=str, required=False),
+            OpenApiParameter(name="order_by", description="Order field", type=str, required=False),
+            OpenApiParameter(name="desc", description="Order", type=bool, required=False),
+        ]
+    )
+)
 class PostListView(ListAPIView):
     serializer_class = PostListSerializer
     service = PostService
@@ -14,7 +25,7 @@ class PostListView(ListAPIView):
         filter_by: str | None = self.request.query_params.get("filter_by")  # type: ignore
         filter_value: str | None = self.request.query_params.get("value")  # type: ignore
         order_by: str | None = self.request.query_params.get("order_by", "created_at")  # type: ignore
-        desc: bool = self.request.query_params.get("desc", "True") == "True"  # type: ignore
+        desc: bool = self.request.query_params.get("desc", "true") == "true"  # type: ignore
 
         filters = PostRepositoryFilter(
             filter_by=filter_by,
