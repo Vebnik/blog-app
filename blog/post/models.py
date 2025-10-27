@@ -16,9 +16,8 @@ class PostModel(models.Model):
     image = models.ImageField(
         _("Image"),
         upload_to="post_images",
-        height_field=None,
-        width_field=None,
         max_length=None,
+        null=True,
     )
     created_at = models.DateTimeField(_("Created"), auto_now_add=True)
     author = models.ForeignKey(User, verbose_name=_("Author"), on_delete=models.CASCADE)

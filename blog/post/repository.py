@@ -49,8 +49,6 @@ class PostRepository:
         with connection.cursor() as cursor:
             append_query = f"where pp.id = {pk}"
 
-            print(base_query.format(append_query=append_query, limit=""))
-
             cursor.execute(base_query.format(append_query=append_query, limit=""))
             return cursor.fetchone()
 
@@ -77,4 +75,5 @@ class PostRepository:
             cursor.execute(
                 base_query.format(append_query=append_query, limit="limit 1")
             )
+
             return cursor.fetchall()
