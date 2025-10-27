@@ -27,8 +27,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # other
+    # drf
     "rest_framework",
+    "drf_spectacular",
+    # other user apps
     "post.apps.PostConfig",
     "comment.apps.CommentConfig",
 ]
@@ -125,6 +127,14 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # drf
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
-        'rest_framework.permissions.AllowAny',
-    ]
+        "rest_framework.permissions.AllowAny",
+    ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Blog API",
+    "DESCRIPTION": "API details",
+    "VERSION": "0.0.1",
+    "SERVE_INCLUDE_SCHEMA": True,
 }

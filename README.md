@@ -24,9 +24,10 @@ password:       admin
 
 App availible on
 ```
-admin panel:    http://localhost:8000/admin/
-api interface:  http://localhost:8000/api-auth/login/
-api root:       http://localhost:8000/api/
+admin panel:       http://localhost:8000/admin/
+api ui (redoc):    http://localhost:8000/api/schema/redoc/
+api ui (swagger):  http://localhost:8000/api/schema/swagger-ui/
+api root:          http://localhost:8000/api/
 ```
 
 After start we have test data in database
