@@ -10,10 +10,18 @@ from post.service import PostService, PostRepositoryFilter
 @extend_schema_view(
     get=extend_schema(
         parameters=[
-            OpenApiParameter(name="filter_by", description="Filter field", type=str, required=False),
-            OpenApiParameter(name="value", description="Filter value", type=str, required=False),
-            OpenApiParameter(name="order_by", description="Order field", type=str, required=False),
-            OpenApiParameter(name="desc", description="Order", type=bool, required=False),
+            OpenApiParameter(
+                name="filter_by", description="Filter field", type=str, required=False
+            ),
+            OpenApiParameter(
+                name="value", description="Filter value", type=str, required=False
+            ),
+            OpenApiParameter(
+                name="order_by", description="Order field", type=str, required=False
+            ),
+            OpenApiParameter(
+                name="desc", description="Order", type=bool, required=False
+            ),
         ]
     )
 )
