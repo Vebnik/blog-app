@@ -18,15 +18,14 @@ class PostSerializer(serializers.Serializer):
     author = AuthorSerializer()
     image = serializers.SerializerMethodField(required=False)
     created_at = serializers.DateTimeField(required=False)
-    
+
     def get_image(self, obj):
         return f"{MEDIA_URL}{obj["image"]}"
 
 
 class PostListSerializer(PostSerializer):
     description = serializers.CharField()
-    last_comment_date = serializers.DateTimeField(required=False)
-    last_comment_author = serializers.CharField(required=False)
+    last_comment = CommentSerializer()
 
 
 class PostDetailSerializer(PostSerializer):
