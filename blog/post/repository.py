@@ -50,6 +50,7 @@ class PostRepository:
             append_query = f"where pp.id = {pk}"
 
             cursor.execute(base_query.format(append_query=append_query, limit=""))
+
             return cursor.fetchone()
 
     @staticmethod
@@ -70,7 +71,7 @@ class PostRepository:
             if filter.filter_by and filter.value and filter.filter_by in allow_fields:
                 append_query += f"where {filter.filter_by} = '{filter.value}'\n"
             if filter.order_by and filter.order_by in allow_fields:
-                append_query += f"order by {filter.order_by} {'desc' if filter.desc else 'asc'}"
+                append_query += (f"order by {filter.order_by} {'desc' if filter.desc else 'asc'}")
 
             cursor.execute(
                 base_query.format(append_query=append_query, limit="limit 1")

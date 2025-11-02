@@ -43,8 +43,12 @@ class PostService:
                         "username": row[7],
                         "email": row[8],
                     },
-                    "last_comment_date": row[9][0]["created_at"],
-                    "last_comment_author": row[9][0]["author"],
+                    "last_comment_date": (
+                        row[9][0]["created_at"] if row[9] is not None else None
+                    ),
+                    "last_comment_author": (
+                        row[9][0]["author"] if row[9] is not None else None
+                    ),
                 },
                 raw_data,
             )

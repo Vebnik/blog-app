@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from app.settings import MEDIA_URL
 from comment.serializers import CommentSerializer
 
 
@@ -15,8 +16,11 @@ class PostSerializer(serializers.Serializer):
 
     title = serializers.CharField(max_length=1024)
     author = AuthorSerializer()
-    image = serializers.ImageField(required=False)
+    image = serializers.SerializerMethodField(required=False)
     created_at = serializers.DateTimeField(required=False)
+    
+    def get_image(self, obj):
+        return f"{MEDIA_URL}{obj["image"]}"
 
 
 class PostListSerializer(PostSerializer):
