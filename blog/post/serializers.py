@@ -20,7 +20,7 @@ class PostSerializer(serializers.Serializer):
     created_at = serializers.DateTimeField(required=False)
 
     def get_image(self, obj):
-        return f"{MEDIA_URL}{obj["image"]}"
+        return f"{MEDIA_URL}{obj["image"]}" if obj["image"] is not None else None
 
 
 class PostListSerializer(PostSerializer):
